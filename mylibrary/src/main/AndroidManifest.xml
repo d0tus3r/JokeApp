@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="net.digitalswarm.mylibrary">
+
+    <application>
+        <activity android:name=".AndroidLibraryActivity"/>
+    </application>
+
+</manifest>
