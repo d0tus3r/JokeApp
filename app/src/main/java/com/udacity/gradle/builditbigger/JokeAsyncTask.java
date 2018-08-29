@@ -3,6 +3,8 @@ package com.udacity.gradle.builditbigger;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
+
 import net.digitalswarm.mylibrary.*;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -12,6 +14,8 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.udacity.gradle.builditbigger.backend.myApi.MyApi;
 
 import java.io.IOException;
+
+import static android.content.ContentValues.TAG;
 
 public class JokeAsyncTask extends AsyncTask<Object, Void, String> {
     private static MyApi myApiService = null;
@@ -36,7 +40,9 @@ public class JokeAsyncTask extends AsyncTask<Object, Void, String> {
         try {
             return myApiService.genJoke().execute().getJoke();
         } catch (IOException e) {
-            return e.getMessage();
+            //log error message and return empty string
+            Log.d(TAG, "doInBackground: " + e.getMessage());
+            return "";
         }
     }
 
